@@ -426,6 +426,7 @@ export interface ApiBrandBrand extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    dealer: Schema.Attribute.Relation<'manyToOne', 'api::dealer.dealer'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::brand.brand'> &
       Schema.Attribute.Private;
@@ -460,6 +461,36 @@ export interface ApiCarCar extends Struct.CollectionTypeSchema {
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     Year: Schema.Attribute.Integer;
+  };
+}
+
+export interface ApiDealerDealer extends Struct.CollectionTypeSchema {
+  collectionName: 'dealers';
+  info: {
+    displayName: 'Dealer';
+    pluralName: 'dealers';
+    singularName: 'dealer';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    brands: Schema.Attribute.Relation<'oneToMany', 'api::brand.brand'>;
+    Contact_number: Schema.Attribute.Integer;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::dealer.dealer'
+    > &
+      Schema.Attribute.Private;
+    Name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
   };
 }
 
@@ -975,6 +1006,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::brand.brand': ApiBrandBrand;
       'api::car.car': ApiCarCar;
+      'api::dealer.dealer': ApiDealerDealer;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

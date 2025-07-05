@@ -19,6 +19,12 @@
       "relation": "oneToMany",
       "target": "api::car.car",
       "mappedBy": "brand"
+    },
+    "dealer": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::dealer.dealer",
+      "inversedBy": "brands"
     }
   }
 }
