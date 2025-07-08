@@ -20,7 +20,7 @@
       "target": "api::car.car",
       "mappedBy": "brand"
     },
-    "dealer": {
+    "financer": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::dealer.dealer",

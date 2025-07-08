@@ -426,7 +426,7 @@ export interface ApiBrandBrand extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    dealer: Schema.Attribute.Relation<'manyToOne', 'api::dealer.dealer'>;
+    financer: Schema.Attribute.Relation<'manyToOne', 'api::dealer.dealer'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::brand.brand'> &
       Schema.Attribute.Private;
@@ -467,7 +467,7 @@ export interface ApiCarCar extends Struct.CollectionTypeSchema {
 export interface ApiDealerDealer extends Struct.CollectionTypeSchema {
   collectionName: 'dealers';
   info: {
-    displayName: 'Dealer';
+    displayName: 'Financer';
     pluralName: 'dealers';
     singularName: 'dealer';
   };
